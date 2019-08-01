@@ -1,0 +1,22 @@
+{
+  "name": "graphql-example",
+  "version": "1.0.0",
+  "description": "A simple comparitive example between tradiotional REST Api and using GraphQL",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --max-old-space-size=1024 app.js"
+  },
+  "keywords": [
+    "GraphQL"
+  ],
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.5",
+    "mongoose": "5.6.2",
+    "mongodb-memory-server": "^4.2.1"
+  },
+  "author": "cameron.newby",
+  "license": "ISC"
+}

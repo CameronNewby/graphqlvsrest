@@ -51,17 +51,24 @@ function setupRoutes(router) {
   }
 
   function getUserFollowers(req, res) {
+    let { name } = req.params;
 
+    db.models.User.findOne({name: name}, function (err, doc) {
+        if (err) {
+            return res.status(400).send('Error was given when trying to fetch users post with name' + name);
+        }
+        return res.json(doc);
+    }).lean().select('followers').populate('followers');
   }
 
   function createUser(req, res) {
-    let { user } = req.query;
+    let { user } = req.body;
 
     db.models.User.create(user, function (err, doc) {
         if (err) {
             return res.status(400).send('Error was given when trying to create new user.');
         }
         return res.json(doc);
-    }).lean();
+    });
   }
 }

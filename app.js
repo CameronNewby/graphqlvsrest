@@ -3,6 +3,7 @@
     const expressGraphql = require('express-graphql');
     const Server = require('http').Server;
     const router = express.Router();
+    const bodyParser = require('body-parser');
     const graphQLSchema = require('./graphql/schema');
     const dbManager = require('./db/db');
 
@@ -14,6 +15,11 @@
     
         let db = new dbManager();
         app.services.db = await db.start();
+
+        app.use(bodyParser.urlencoded({
+            extended: true
+          }));
+        app.use(bodyParser.json());
     
         // Here we shall create a pretty simple REST endpoint using express.
         let restController = require('./rest/restController')(app);

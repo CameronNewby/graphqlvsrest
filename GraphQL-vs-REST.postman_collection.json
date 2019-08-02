@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "f18fd01e-671a-4f6c-80c0-732e573c2a9a",
+		"name": "GraphQL-vs-REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GraphQL",
+			"item": [
+				{
+					"name": "postToGetUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"{user(name: \\\"Bob\\\") {name, age}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getToGetUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/graphql?query={user(name: \"Bob\") {name, age}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "{user(name: \"Bob\") {name, age}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "graphQLToGetUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  user(name: \"Bob\") {\r\n    name,\r\n    age\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Use postman new ability to write graphql queries."
+					},
+					"response": []
+				},
+				{
+					"name": "postToCreateUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"mutation {createUser(name: \\\"Tim\\\", age: 55){name,age}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "use POST request to create user on graphql endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "graphQLToCreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  createUser(name: \"Tim\", age: 55){\r\n    name,\r\n    age\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Use graphql query language to creat a user via a mutation"
+					},
+					"response": []
+				},
+				{
+					"name": "postToGetAllUsers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"{allUsers{name,age}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "using POST mehtod to get all users from graphQL endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "getToGetAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "using GET request to get all users from graphQL endpoint"
+					},
+					"response": []
+				},
+				{
+					"name": "graphQLToGetAllUsers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  allUsers {\r\n    name,\r\n    age\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "use graphQL query language to get all users"
+					},
+					"response": []
+				}
+			],
+			"description": "GraphQL Endpoint Queries "
+		},
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/user?name=John",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "John"
+								}
+							]
+						},
+						"description": "get a single user by name"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/user/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"all"
+							]
+						},
+						"description": "get all users "
+					},
+					"response": []
+				},
+				{
+					"name": "getUsersPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/user/Bob/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"Bob",
+								"posts"
+							]
+						},
+						"description": "get a specific users posts"
+					},
+					"response": []
+				},
+				{
+					"name": "getUsersFollowers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rest/user/Bob/followers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"Bob",
+								"followers"
+							]
+						},
+						"description": "get a single users followers"
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n\t\t\"name\": \"Pam\",\n\t\t\"age\": \"35\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/rest/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"user",
+								"create"
+							]
+						},
+						"description": "post request to create a new user"
+					},
+					"response": []
+				}
+			],
+			"description": "Queries to collect data from REST endpoints"
+		}
+	]
+}

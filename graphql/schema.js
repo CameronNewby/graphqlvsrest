@@ -19,10 +19,6 @@ function create() {
             createUser(name: String!, age: Int!): User!
         }
 
-        type Subscription {
-            newUser: User!
-        }
-
         ## User Schema
         type User {
             # Full name of the user
@@ -75,11 +71,6 @@ function create() {
         Mutation: {
             createUser: async (parent, { name, age }, context, info) => {
                 return await context.db.models.User.create({name, age});
-            }
-        },
-        Subscription: {
-            newUser: {
-                subscribe: (parent, args, {pubsub}) => {}
             }
         }
     }

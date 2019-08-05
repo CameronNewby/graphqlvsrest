@@ -1,3 +1,7 @@
+## GraphQL vs REST
+
+This is a small node app serving up an API for listsing and creating users. It exposes several endpoints over REST and a single GraphQL endpoint, this is small demo app which will allow you to see the difference between the two frameworks.
+
 You can install and start up the Node app with the following commands.
 ```javascript
 npm install && npm run start
